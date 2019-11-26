@@ -1,0 +1,15 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="list-group">
+            <span class="list-group-item list-group-item-primary">
+                All games x {{ object_list|length }}</span>
+            {% for object in object_list %}
+            <a href="{% url 'admins:game_update' object.pk %}"
+               class="list-group-item list-group-item-action">{{ object.name }}</a>
+            <a class="del-btn" href="{% url 'admins:game_delete' object.pk %}">X</a>
+            {% endfor %}
+        </div>
+        <a href="{% url 'admins:game_create' %}" class="buttons" >NEW GAME</a>
+    {% endblock %}

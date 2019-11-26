@@ -1,0 +1,47 @@
+{% extends 'mainapp/base.html'%}
+{% load staticfiles %}
+
+        {% block title%}
+            {{block.super }} | {{ title|title }}
+        {% endblock %}
+
+        {% block js%}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="{% static 'js/vic_script.js' %}"></script>
+        {% endblock %}
+
+
+        {% block content %}
+            <div class="top">
+                <div class="victorina">
+                    <div id="qwiz" class="qwiz-select">
+                        <h1>Выберите тему викторины?</h1>
+                        <div  class="unswers">
+                            {% for qwiz in qwizes %}
+                                <div class="qwiz">
+                                    <button class="q-select" onclick="qwiz_select('{{qwiz.pk }}')">{{ qwiz.name}}</button>
+                                    <p>{{ qwiz.description }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="unswers" class="unswer-select">
+                        <h1 id="qwestion"></h1>
+                        <div class="unswers">
+                            <button class='a-select' id="answ-a" onclick="clikansw('a')"></button>
+                            <button class='a-select' id="answ-b" onclick="clikansw('b')"></button>
+                            <button class='a-select' id="answ-c" onclick="clikansw('c')"></button>
+                            <button class='a-select' id="answ-d" onclick="clikansw('d')"></button>
+                        </div>
+                    </div>
+                    <div id="rank" class="rank">
+                        <a class="x-btn" href="{% url 'index' %}"><img src="{% static 'img/x.png' %}" ></a>
+                        <img class="rank-img" id="rank-img" src="#">
+                        <div class="rank-info">
+                            <h2 class="rank-h2" id="rank-name"></h2>
+                            <p id="rank-description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}

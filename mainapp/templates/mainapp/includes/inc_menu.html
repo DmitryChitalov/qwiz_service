@@ -1,0 +1,7 @@
+{% load staticfiles %}
+<ul class="menu">
+    <li><a href="{% url 'games' %}" class="{% if request.resolver_match.url_name == 'games' %}link-active{% endif %}">Расписание</a></li>
+    <li><a href="{% url 'leadboard' %}" class="{% if request.resolver_match.url_name == 'leadboard' %}link-active{% endif %}">Турнирная таблица</a></li>
+    <li><a href="https://vk.com/albums-179011449" class="{% if request.resolver_match.url_name == 'galery' %}link-active{% endif %}">Фотогалерея</a></li>
+    <li><a href="{% url 'victorina' %}" class="{% if request.resolver_match.url_name == 'victorina' %}link-active{% endif %}">Викторина</a></li>
+</ul>

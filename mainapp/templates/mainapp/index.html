@@ -1,0 +1,26 @@
+{% extends 'mainapp/base-i.html'%}
+{% load staticfiles %}
+
+        {% block title%}
+            {{block.super }} | {{ title|title }}
+        {% endblock %}
+
+
+        {% block content %}
+            <div class="start">
+                    <img class="start-img" src="{% static 'img/start.png' %}" alt="start">
+                <a class="rules-btn" href="{% static 'doc/rules.pdf' %}"></a>
+            </div>
+                <img class="dignities" src="{% static 'img/dignities.jpg' %}" alt="dignities">
+                <img src="{% static 'img/levels.png' %}" alt="levels">
+            <div class="bottom">
+                <a href="{% url 'reg' %}" class="reg_button">
+                    <img src="{% static 'img/buttun_register.png' %}" alt="reg">
+                </a>
+                <h1 class="little_text">на ближайшую игру</h1>
+                <h3 class="price">стоимость игры - 400 рублей/чел</h3>
+                <footer>
+                    {% include 'mainapp/includes/inc_links.html' %}
+                </footer>
+            </div>
+        {% endblock %}

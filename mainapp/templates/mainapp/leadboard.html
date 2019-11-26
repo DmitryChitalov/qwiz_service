@@ -1,0 +1,34 @@
+{% extends 'mainapp/base.html'%}
+{% load staticfiles %}
+
+        {% block title%}
+            {{block.super }} | {{ title|title }}
+        {% endblock %}
+
+
+        {% block content %}
+        <div class="top">
+                <img class='span-1' src="{% static 'img/span2.png' %}">
+                <table class="leadboard">
+                    <caption>Таблица лидеров</caption>
+                    <tr class="table-head">
+                        <th class="Icolumn">место в рейтинге</th>
+                        <th class="IIcolumn">название команды</th>
+                        <th class="IIIcolumn">общее количество баллов за все сыгранные игры</th>
+                    </tr>
+                    {% for command in commands %}
+                            <tr>
+                                <th class="Icolumn">{% if command.num == 1 %}
+                                                        <img class="lead-img" src="{% static 'img/lead1.png' %}">
+                                                    {% elif command.num == 2 %}
+                                                        <img src="{% static 'img/lead2.png' %}">
+                                                    {% elif command.num == 3 %}
+                                                        <img src="{% static 'img/lead3.png' %}">
+                                                    {% endif %}{{command.num }}</th>
+                                <th class="IIcolumn">{{ command.name }}</th>
+                                <th class="IIIcolumn">{{ command.points }}</th>
+                            </tr>
+                    {% endfor %}
+                </table>
+        </div>
+        {% endblock %}

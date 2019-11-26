@@ -1,0 +1,16 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="list-group">
+            <span class="list-group-item list-group-item-primary">
+                All qwizes x {{ object_list|length }}</span>
+            {% for object in object_list %}
+            <div>
+            <a href="{% url 'admins:qwiz_update' object.pk %}"
+               class="list-group-item list-group-item-action">{{ object.name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'admins:qwiz_create' %}" class="buttons" >NEW GAME</a>
+    {% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'mainapp/base.html'%}
+{% load staticfiles %}
+
+        {% block title%}
+            {{block.super }} | {{ title|title }}
+        {% endblock %}
+
+
+        {% block content %}
+            <div class="top">
+            <img class='span-1' src="{% static 'img/span1.png' %}">
+            <div class="games">
+                <div class="game-big">
+                    <img class='img-game-big' src="{% if coming_game.image_big %}/media/{{ coming_game.image_big }}
+                    {% else %}{% static 'img/default.png' %}{% endif %}">
+                    <div class="info-game-big">
+                        <h2>Ближайшая игра</h2>
+                        <h1><img src="{% static 'img/calendar.png' %}"> дата:<span>{{ coming_game.date }}</span></h1>
+                        <h1><img src="{% static 'img/time.png' %}"> время:<span>{{ coming_game.time }}</span></h1>
+                        <h1><img src="{% static 'img/point.png' %}"> Место:<span>{{ coming_game.place }}</span></h1>
+                        <h1> Описание:</h1>
+                        <p>{{ coming_game.description }}</p>
+                        <a href="{% url 'reg' %}" class="reg-button-2">
+                            <img src="{% static 'img/buttun_register.png' %}" alt="reg">
+                        </a>
+                    </div>
+                </div>
+                    <div class="little-games">
+                        {% for game in other_games %}
+                            <div class="game-little">
+                                <img class="img-little-game" src="{% if game.image %}/media/{{ game.image }}
+                                {% else %}{% static 'img/default-min.png' %}{% endif %}" alt="game little">
+                                <h1><img class="icon-little" src="{% static 'img/calendar.png' %}"> дата:<span>{{ game.date| date:"SHORT_DATE_FORMAT" }}</span></h1>
+                                <h1><img class="icon-little" src="{% static 'img/time.png' %}"> время:<span>{{ game.time }}</span></h1>
+                                <h1><img class="icon-little" src="{% static 'img/point.png' %}"> Место:<span>{{ game.place }}</span></h1>
+                                <h1> Описание:</h1>
+                                <p>{{ game.description }}</p>
+                                <a href="{% url 'reg' %}" class="reg-button-2">
+                                    <img src="{% static 'img/buttun_register.png' %}" alt="reg">
+                                </a>
+                            </div>
+                         {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        {% endblock %}
+
+<!--"{% if coming_game.image %}-->
+    <!--{{coming_game.image}}-->
+<!--{% else %}-->
+    <!--{% static 'img/game_big.png' %}-->
+<!--{% endif%}"-->

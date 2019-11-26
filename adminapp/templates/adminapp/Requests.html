@@ -1,0 +1,19 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="list-group">
+            <span class="list-group-item list-group-item-primary">
+                All requests x {{ object_list|length }}</span>
+            {% for request in object_list %}
+            <a href="{% url 'admins:request_delete' request.pk %}"
+               class="list-group-item list-group-item-action">
+                <p> {{ request.game }} :Дата</p>
+                <p> {{ request.members }} х {{ request.command_name }} :Название команды</p>
+                <p>{{ request.mail }} :Почта  {{ request.phone }} :Телефон</p>
+                <p>{{ request.capitan_name }}:Имя капитана</p>
+            </a>
+            {% endfor %}
+        <a href="{% url 'admins:request_create' %}" class="buttons" >NEW REQUEST</a>
+        </div>
+    {% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="login-form">
+            <form  class="fpx-4 py-3" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="form-control" type="submit" value="upgate">
+            </form>
+        </div>
+        <a href="{% url 'admins:qwiz_delete' qwiz.pk %}" class="form-control" >delete</a>
+        <div class="list-group">
+            <span class="list-group-item list-group-item-primary">
+                Qwestions: {{ objects|length}}</span>
+            {% for object in objects %}
+            <a href="{% url 'admins:qwestion_update' object.pk %}" class="{% if object.is_active %}list-group-item list-group-item-action{% else %}
+            list-group-item list-group-item-secondary{% endif %}">{{ object.qwestion }}</a>
+            {% endfor %}
+            <a href="{% url 'admins:qwestion_create' qwiz.pk %}" class="list-group-item list-group-item-success">add qwestion</a>
+        </div>
+    {% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="login-form">
+            <form  class="fpx-4 py-3" method="post">
+                {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% endif %}
+                {{ login_form.as_p }}
+                <input class="form-control" type="submit" value="login">
+            </form>
+        </div>
+    {% endblock %}

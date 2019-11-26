@@ -1,0 +1,16 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="list-group">
+            <span class="list-group-item list-group-item-primary">
+                All commands x {{ object_list|length }}</span>
+            {% for command in object_list %}
+            <a href="{% url 'admins:command_update' command.pk %}"
+               class="{% if command.active %}list-group-item list-group-item-action{% else %}
+               list-group-item list-group-item-secondary{% endif %}">{{ command.points }}:{{ command.name }}</a>
+            <a class="del-btn" href="{% url 'admins:command_delete' command.pk %}">X</a>
+            {% endfor %}
+        <a href="{% url 'admins:command_create' %}" class="buttons" >NEW COMMAND</a>
+        </div>
+    {% endblock %}

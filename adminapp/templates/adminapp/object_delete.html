@@ -1,0 +1,14 @@
+{% extends 'adminapp/base.html'%}
+{% load staticfiles %}
+
+    {% block content %}
+        <div class="deleting">
+            You want del {% if object.username %}{{ object.username }}{% else %}{{ object.name}} {% endif %}?
+            <form method="post">
+                {% csrf_token %}
+                <input class="buttons" type="submit" value="DELETE">
+            </form>
+            <a href="{% url 'admins:games' %}" class="buttons">NO</a>
+        </div>
+
+    {% endblock %}

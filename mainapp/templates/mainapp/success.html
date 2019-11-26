@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html'%}
+{% load staticfiles %}
+
+        {% block title%}
+            {{block.super }} | {{ title|title }}
+        {% endblock %}
+
+
+        {% block content %}
+        <img class="reg-back" src="{% static 'img/registratiom_back.png' %}">
+        <div class="top">
+            <div class="reg-block">
+                <a class="x-btn" href="{% url 'index' %}"><img src="{% static 'img/x.png' %}" ></a>
+                <img src="{% static 'img/reg-complete.png' %}" class="complete">
+            </div>
+        </div>
+        {% endblock %}

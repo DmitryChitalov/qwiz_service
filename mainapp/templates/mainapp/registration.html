@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html'%}
+{% load staticfiles %}
+
+        {% block title%}
+            {{block.super }} | {{ title|title }}
+        {% endblock %}
+
+
+        {% block content %}
+        <img class="reg-back" src="{% static 'img/registratiom_back.png' %}">
+        <div class="top">
+            <div class="reg-block">
+                <a class="x-btn" href="{% url 'index' %}"><img src="{% static 'img/x.png' %}" ></a>
+                <img class="reg-img" src="{% static 'img/reg_img.png' %}">
+                <form class="reg-form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                     <input class="reg-button-3" type="submit" value="">
+                </form>
+            </div>
+            <div class="hide">
+                <img src="{% static 'img/reg-complete.png' %}" class="complete">
+            </div>
+
+        </div>
+        {% endblock %}
